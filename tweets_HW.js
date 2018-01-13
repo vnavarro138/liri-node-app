@@ -13,7 +13,12 @@ if (process.argv[2] === "my-tweets") {
 client.get('statuses/user_timeline', params, function(error, tweets, response) {
 
   if (!error) {
-    console.log(tweets);
+  	//for all tweets data
+  	//console.log(tweets);
+  	//limit data to only text
+    tweets.forEach(function (individualTweet) {
+    console.log('My Recent Tweets: ' + individualTweet.text);
+    })
   }
 });
 };

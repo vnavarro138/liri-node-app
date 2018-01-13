@@ -14,7 +14,11 @@ var movieName = "";
 
 // Loop through all the words in the node argument
 // And do a little for-loop magic to handle the inclusion of "+"s
-
+// if (process.argv[2] === "") {
+// request("http://www.omdbapi.com/?t=mr+nobody&y=&plot=short&apikey=trilogy", function(error, response, body) {
+//if (!error && response.statusCode === 200) {
+//then console.log all movie info
+// }else{
   for (var i = 2; i < nodeArgs.length; i++) {
     if (i > 2 && i < nodeArgs.length) {
       movieName = movieName + "+" + nodeArgs[i];
@@ -51,6 +55,5 @@ request(queryUrl, function(error, response, body) {
     console.log("Movie Plot: " + JSON.parse(body).Plot);
     //console log the actors
     console.log("Movie Actors: " + JSON.parse(body).Actors);
-  
-  }
+}
 });
