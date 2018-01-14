@@ -1,3 +1,6 @@
+// fs is a core Node package for reading and writing files
+var fs = require("fs");
+
 // Include the request npm package
 var request = require("request");
 // Store all of the arguments in an array

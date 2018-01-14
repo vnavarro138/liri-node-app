@@ -7,6 +7,7 @@ var spotify = new Spotify({
  
 var nodeArgs = process.argv;
 var songName = "";
+
 for (var i = 3; i < nodeArgs.length; i++) {
     if (i > 3 && i < nodeArgs.length) {
       songName = songName + "+" + nodeArgs[i];
@@ -15,9 +16,9 @@ for (var i = 3; i < nodeArgs.length; i++) {
     else {
       songName += nodeArgs[i];
     }
-  }
+ }
 //Test for songName variable: 
-console.log(songName);
+//console.log(songName);
 spotify.search({ type: 'track', query: songName, limit: 1}, function(err, data) {
   if (err) {
   	console.log("CHECK");

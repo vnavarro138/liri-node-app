@@ -1,3 +1,23 @@
+// fs is a core Node package for reading and writing files
+var fs = require("fs");
+fs.readFile("keys.js", "utf8", function(error, data) {
+
+  // If the code experiences any errors it will log the error to the console.
+  if (error) {
+    return console.log(error);
+  }
+
+  // We will then print the contents of data
+  console.log(data);
+
+  // Then split it by commas (to make it more readable)
+  var dataArr = data.split(",");
+
+  // We will then re-display the content as an array for later use.
+  console.log(dataArr);
+    console.log(dataArr[1]);
+
+});
 var Twitter = require('twitter');
 //user based authentication
 var client = new Twitter({
@@ -17,7 +37,9 @@ client.get('statuses/user_timeline', params, function(error, tweets, response) {
   	//console.log(tweets);
   	//limit data to only text
     tweets.forEach(function (individualTweet) {
-    console.log('My Recent Tweets: ' + individualTweet.text);
+    console.log('My Tweet: ' + individualTweet.text);
+    //console log when they were created
+    console.log('Created on: ' + individualTweet.created_at);
     })
   }
 });
