@@ -17,6 +17,7 @@ var movieName = "";
 // And do a little for-loop magic to handle the inclusion of "+"s
 //if (nodeArgs[3] === undefined) { use request("http://www.omdbapi.com/?t=mr+nobody&y=&plot=short&apikey=trilogy", function(error, response, body) {
 //if (nodeArgs[2] === "movie-this"){
+if (nodeArgs[2] === "movie-this") {
   for (var i = 2; i < nodeArgs.length; i++) {
     if (i > 2 && i < nodeArgs.length) {
       movieName = movieName + "+" + nodeArgs[i];
@@ -26,7 +27,7 @@ var movieName = "";
     }
   }
 // Then run a request to the OMDB API with the movie specified
-
+console.log(movieName);
   var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";
 
 // This line is just to help us debug against the actual URL.
@@ -56,3 +57,4 @@ request(queryUrl, function(error, response, body) {
     console.log("Movie Actors: " + JSON.parse(body).Actors);
   }
 });
+};

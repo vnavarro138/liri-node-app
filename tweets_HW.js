@@ -38,8 +38,8 @@ client.get('statuses/user_timeline', params, function(error, tweets, response) {
   	//limit data to only text
     tweets.forEach(function (individualTweet) {
     console.log('My Tweet: ' + individualTweet.text);
-    //console log when they were created
-    console.log('Created on: ' + individualTweet.created_at);
+    //console log when they were created, added the "\n" to include a break for easier read
+    console.log('Created on: ' + individualTweet.created_at + "\n");
     })
   }
 });

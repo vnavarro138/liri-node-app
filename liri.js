@@ -1,8 +1,10 @@
 // fs is a core Node package for reading and writing files
 var fs = require("fs");
 
-// Include the request npm package
+// Include the request for npm packages
 var request = require("request");
+var Twitter = require('twitter');
+var Spotify = require('node-spotify-api');
 // Store all of the arguments in an array
 var nodeArgs = process.argv;
 // Parses the command line argument to capture the command request and the movie or song title
@@ -24,7 +26,7 @@ var songTitle = "";
 //TO DO: have liri accept inputstring "do-what-it-says"
 
 //TO DO: have liri accept inputstring "movie-this '<moviename here?'"
-if (process.argv[2] === "movie-this") {
+if (nodeArgs[2] === "movie-this") {
 
 	for (var i = 2; i < nodeArgs.length; i++) {
 	  if (i > 2 && i < nodeArgs.length) {
@@ -39,7 +41,7 @@ if (process.argv[2] === "movie-this") {
 }
 
 
-else if (process.argv[2] === "spotify-this-song") {
+else if (nodeArgs[2] === "spotify-this-song") {
   for (var i = 2; i < nodeArgs.length; i++) {
 	  if (i > 2 && i < nodeArgs.length) {
 	    songTitle = songTitle + "+" + nodeArgs[i];
@@ -51,7 +53,19 @@ else if (process.argv[2] === "spotify-this-song") {
 	}
 		    
 }
+//to do
+else if (nodeArgs[2] === "my-tweets") {
+  for (var i = 2; i < nodeArgs.length; i++) {
+	  if (i > 2 && i < nodeArgs.length) {
+	    songTitle = songTitle + "+" + nodeArgs[i];
 
+	  }
+	  else {
+	    songTitle += nodeArgs[i];
+  	  }
+	}
+		    
+}
 
 // else if (process.argv[2] === "my-tweets") {
 
