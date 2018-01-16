@@ -5,7 +5,12 @@ var fs = require("fs");
 var request = require("request");
 var Twitter = require('twitter');
 var Spotify = require('node-spotify-api');
-
+//spotify keys
+var spotify = new Spotify({
+  id: '34082657b597454e93e865cc1833c8c7',
+  secret: 'f6596625700040f48f8c8d0b6738ab6e'
+});
+//twitter keys
 var keys =require("./keys.js");
 //user based authentication
 var client = new Twitter (keys);
@@ -15,7 +20,7 @@ var nodeArgs = process.argv;
 // Parses the command line argument to capture the command request and the movie or song title
 // Create an empty variable for holding the movie name
 var movieName = "";
-var songTitle = "";
+var songName = "";
 var params = {screen_name: 'Queen V', count: 20};
 //nodeArgs[2];
 //TO DO: Write code to grab data from keys.js
@@ -31,7 +36,7 @@ var params = {screen_name: 'Queen V', count: 20};
 //TO DO: default movie is Mr Nobody (if no movie name is entered)
 //TO DO: have liri accept inputstring "do-what-it-says"
 
-//TO DO: have liri accept inputstring "movie-this '<moviename here?'"
+//TO DO: create a switch condition for the three accepted input commands
 switch (nodeArgs[2]){
 	case "movie-this":
 	movieThis();
@@ -39,6 +44,10 @@ switch (nodeArgs[2]){
 
 	case "my-tweets":
 	tweets();
+	break;
+
+	case "spotify-me":
+	spotifyThis();
 	break;
 }
 
@@ -107,4 +116,32 @@ function tweets () {
   	  })
   	}
 	});
+};
+
+function spotifyThis () {
+  for (var i = 3; i < nodeArgs.length; i++) {
+   if (i > 3 && i < nodeArgs.length) {
+     songName = songName + "+" + nodeArgs[i];
+
+  }
+   else {
+     songName += nodeArgs[i];
+   }
+ }
+//Test for songName variable: 
+//console.log(songName);
+spotify.search({ type: 'track', query: songName, limit: 1}, function(err, data) {
+  if (err) {
+    console.log("CHECK");
+    console.log('Error occurred: ' + err);
+  }
+//console log the artist name
+console.log("Artist Name: " + data.tracks.items[0].artists[0].name);
+//console log song name
+console.log("Song Title: " + data.tracks.items[0].name);
+//console log preview link of song
+console.log("Link to Song: " + data.tracks.items[0].preview_url);
+//console log album song is in
+console.log("Album Title: " + data.tracks.items[0].album.name);
+});
 };
