@@ -18,13 +18,13 @@ for (var i = 3; i < nodeArgs.length; i++) {
     }
  }
 //Test for songName variable: 
-//console.log(songName);
+console.log(songName);
 spotify.search({ type: 'track', query: songName, limit: 1}, function(err, data) {
   if (err) {
-  	console.log("CHECK");
+    console.log("CHECK");
     console.log('Error occurred: ' + err);
   }
-if (process.argv[2] === "spotify-me") {
+if (nodeArgs[2] === "spotify-me") {
 //console log the artist name
 console.log("Artist Name: " + data.tracks.items[0].artists[0].name);
 //console log song name

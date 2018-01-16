@@ -9,30 +9,37 @@ var request = require("request");
 // Store all of the arguments in an array
 var nodeArgs = process.argv;
 //check to see if "movie-this" is indeed being stored in nodeArgs[2]
-console.log(nodeArgs[2]);
+//console.log(nodeArgs[2]);
 // Create an empty variable for holding the movie name
 var movieName = "";
 
 // Loop through all the words in the node argument
 // And do a little for-loop magic to handle the inclusion of "+"s
-//if (nodeArgs[3] === undefined) { use request("http://www.omdbapi.com/?t=mr+nobody&y=&plot=short&apikey=trilogy", function(error, response, body) {
-//if (nodeArgs[2] === "movie-this"){
+
 if (nodeArgs[2] === "movie-this") {
-  for (var i = 2; i < nodeArgs.length; i++) {
-    if (i > 2 && i < nodeArgs.length) {
-      movieName = movieName + "+" + nodeArgs[i];
-    }
-    else {
-      movieName += nodeArgs[i];
+  if (nodeArgs[3] === undefined) { 
+    movieName = "Mr+nobody";
+    }else {
+    for (var i = 2; i < nodeArgs.length; i++) {
+      if (i > 2 && i < nodeArgs.length) {
+       movieName = movieName + "+" + nodeArgs[i];
+      }
+      else {
+        movieName += nodeArgs[i];
+      }
     }
   }
 // Then run a request to the OMDB API with the movie specified
-console.log(movieName);
+//console.log(nodeArgs[2]);
+//console.log(movieName);
+//since movieName was defined as movieName+'the actual movie title', I used this to remove movie-this+ that was in front of movie title
+movieName = movieName.replace("movie-this+","");
+//console.log(movieName);
   var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";
 
 // This line is just to help us debug against the actual URL.
-console.log(queryUrl);
-console.log(nodeArgs[2]);
+//console.log(queryUrl);
+//console.log(nodeArgs[2]);
 request(queryUrl, function(error, response, body) {
 
   // If the request is successful
