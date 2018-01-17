@@ -9,3 +9,10 @@ var twitterKeys = {
  
 
 module.exports = twitterKeys;
+
+var spotifyKeys = {
+  id: '34082657b597454e93e865cc1833c8c7',
+  secret: 'f6596625700040f48f8c8d0b6738ab6e'
+}
+
+module.exports = spotifyKeys;

@@ -1,6 +1,6 @@
 // fs is a core Node package for reading and writing files
 var fs = require("fs");
-//need to give an absolute file path for keys.js
+//need to give an absolute file path for keys.js that contains all the keys for the API
 var keys =require("./keys.js");
 
 var Twitter = require('twitter');

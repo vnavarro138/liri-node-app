@@ -6,11 +6,8 @@ var request = require("request");
 var Twitter = require('twitter');
 var Spotify = require('node-spotify-api');
 //spotify keys
-var spotify = new Spotify({
-  id: '34082657b597454e93e865cc1833c8c7',
-  secret: 'f6596625700040f48f8c8d0b6738ab6e'
-});
-//twitter keys
+var spotify = new Spotify (keys);
+//keys
 var keys =require("./keys.js");
 //user based authentication
 var client = new Twitter (keys);

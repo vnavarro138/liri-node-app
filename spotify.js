@@ -1,9 +1,8 @@
+var fs = require("fs");
 var Spotify = require('node-spotify-api');
+var keys =require("./keys.js");
+var spotify = new Spotify (keys);
 
-var spotify = new Spotify({
-  id: '34082657b597454e93e865cc1833c8c7',
-  secret: 'f6596625700040f48f8c8d0b6738ab6e'
-});
  
 var nodeArgs = process.argv;
 var songName = "";
